@@ -21,7 +21,7 @@ class Producto(
     var descripcion: String? = null,
 
     @Column(nullable = false)
-    var Stock: Int = 0,
+    var stock: Int = 0,
 
     @Column(name = "stock_minimo",nullable = false)
     var stockMinimo: Int = 5,
@@ -32,5 +32,5 @@ class Producto(
 
     ) {
     fun BajoStock():
-            Boolean = Stock <= stockMinimo
+            Boolean = stock <= stockMinimo
 }

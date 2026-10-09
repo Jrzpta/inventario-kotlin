@@ -33,7 +33,7 @@ class Movimiento(
     var cantidad: Int,
 
     @Column(nullable = false, length = 40)
-    var usuario: String?,
+    var usuario: String,
 
     @Column(length = 255)
     var motivo: String? = null,

@@ -20,6 +20,10 @@ class Usuario(
     var claveHash: String,
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    var rol: Rol,
+
+
     @Column(nullable = false)
     var activo: Boolean = true,
 
