@@ -19,7 +19,7 @@ class ProductoService(
     @Transactional(readOnly = true)
     fun listar(buscar: String? = null): List<Producto> =
         if(buscar.isNullOrBlank()) productos.findAll()
-        else productos.finByNombreContainingIgnoreCase(buscar.trim())
+        else productos.findByNombreContainingIgnoreCase(buscar.trim())
 
     @Transactional(readOnly = true)
     fun obtener(id: Long): Producto =

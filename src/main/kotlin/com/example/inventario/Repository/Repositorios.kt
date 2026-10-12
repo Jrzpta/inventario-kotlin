@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param
 interface ProductoRepository: JpaRepository<Producto, Long>{
     fun existsByCodigo(codigo: String): Boolean
 
-    fun finByNombreContainingIgnoreCase(nombre: String): List<Producto>
+    fun findByNombreContainingIgnoreCase(nombre: String): List<Producto>
 
     @Query("Select p from Producto p where p.stock <= p.stockMinimo order by p.stock asc")
     fun findBajoStock(): List<Producto>
