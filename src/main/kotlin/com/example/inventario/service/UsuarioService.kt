@@ -1,7 +1,7 @@
 package com.example.inventario.service
 
-import com.example.inventario.Model.Usuario
-import com.example.inventario.Repository.UsuarioRepository
+import com.example.inventario.model.Usuario
+import com.example.inventario.repository.UsuarioRepository
 import com.example.inventario.dto.UsuarioRequest
 import com.example.inventario.exception.NoEncontradoException
 import com.example.inventario.exception.ReglaNegocioException
@@ -19,12 +19,13 @@ class UsuarioService(
 
     @Transactional
     fun crear(req: UsuarioRequest): Usuario{
-        if (usuarios.existsByNombreUsuario(req.nombreUsuario)){
-            throw ReglaNegocioException("El usuario ${req.nombreUsuario} ya existe!")
+        val nombre = req.nombreUsuario.trim()
+        if (usuarios.existsByNombreUsuario(nombre)){
+            throw ReglaNegocioException("El usuario ${nombre} ya existe!")
         }
         return usuarios.save(
             Usuario(
-                nombreUsuario = req.nombreUsuario.trim(),
+                nombreUsuario = nombre,
                 claveHash = encoder.encode(req.clave)!!,
                 rol = req.rol
             )

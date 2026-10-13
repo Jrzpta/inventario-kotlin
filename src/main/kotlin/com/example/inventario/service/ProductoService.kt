@@ -1,7 +1,8 @@
 package com.example.inventario.service
 
-import com.example.inventario.Model.Producto
-import com.example.inventario.Repository.ProductoRepository
+import com.example.inventario.model.Producto
+import com.example.inventario.repository.MovimientoRepository
+import com.example.inventario.repository.ProductoRepository
 import com.example.inventario.dto.ProductoRequest
 import com.example.inventario.exception.NoEncontradoException
 import com.example.inventario.exception.ReglaNegocioException
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional
 
 class ProductoService(
     private val productos: ProductoRepository,
+    private val movimientos: MovimientoRepository,
     @Value("\${inventario.stock-minimo-por-defecto:10}") private val stockMinimoPorDefecto: Int
 ){
     @Transactional(readOnly = true)
@@ -59,7 +61,14 @@ class ProductoService(
 
     @Transactional
     fun eliminar(id: Long){
-        productos.delete(obtener(id))
+        val p = obtener(id)
+        if(movimientos.existsByProductoId(id)){
+            throw ReglaNegocioException(
+                "NO SE PUEDE ELIMINAR EL PRODUCTO ${p.codigo}: TIENE MOVIMIENTOS REGISTRADOS" +
+                        "SI YA NO LO VENDES, REGISTRA UNA SALIDA POR TODO SU STOCK"
+            )
+        }
+        productos.delete(p)
     }
 
 

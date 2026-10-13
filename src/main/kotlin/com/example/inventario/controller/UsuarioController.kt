@@ -29,7 +29,7 @@ class UsuarioController(private val usuarios : UsuarioService) {
     fun crear(@Valid @RequestBody req: UsuarioRequest): ResponseEntity<UsuarioResponse> =
         ResponseEntity.status(HttpStatus.CREATED).body(usuarios.crear(req).toResponse())
 
-    @PatchMapping("/{id}/api/activo")
+    @PatchMapping("/{id}/activo")
     fun cambiarActivo(@PathVariable id: Long, @RequestParam valor: Boolean): UsuarioResponse =
         usuarios.cambiarActivo(id,valor).toResponse()
 }

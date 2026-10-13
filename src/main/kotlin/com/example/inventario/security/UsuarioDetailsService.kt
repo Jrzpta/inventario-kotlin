@@ -1,6 +1,6 @@
 package com.example.inventario.security
 
-import com.example.inventario.Repository.UsuarioRepository
+import com.example.inventario.repository.UsuarioRepository
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService

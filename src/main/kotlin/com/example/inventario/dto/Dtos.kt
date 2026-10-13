@@ -1,10 +1,10 @@
 package com.example.inventario.dto
 
-import com.example.inventario.Model.Movimiento
-import com.example.inventario.Model.Producto
-import com.example.inventario.Model.Rol
-import com.example.inventario.Model.TipoMovimiento
-import com.example.inventario.Model.Usuario
+import com.example.inventario.model.Movimiento
+import com.example.inventario.model.Producto
+import com.example.inventario.model.Rol
+import com.example.inventario.model.TipoMovimiento
+import com.example.inventario.model.Usuario
 import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
@@ -14,7 +14,7 @@ import java.time.LocalDateTime
 data class ProductoRequest(
     @field:NotBlank @field:Size(max = 40) val codigo: String,
     @field:NotBlank @field:Size(max = 120) val nombre: String,
-    @field:Size(max = 225) val descripcion: String? = null,
+    @field:Size(max = 255) val descripcion: String? = null,
     @field:Min(0) val stock: Int = 0,
     @field:Min(0) val stockMinimo: Int? = null
     )

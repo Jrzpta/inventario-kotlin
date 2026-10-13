@@ -1,8 +1,8 @@
-package com.example.inventario.Repository
+package com.example.inventario.repository
 
-import com.example.inventario.Model.Movimiento
-import com.example.inventario.Model.Producto
-import com.example.inventario.Model.Usuario
+import com.example.inventario.model.Movimiento
+import com.example.inventario.model.Producto
+import com.example.inventario.model.Usuario
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
@@ -24,4 +24,5 @@ interface UsuarioRepository: JpaRepository<Usuario, Long>{
 interface MovimientoRepository: JpaRepository<Movimiento, Long>{
     @Query("select m from Movimiento m join fetch m.producto where m.producto.id = :productoId order by m.fecha desc")
     fun findByProductoIdOrderByFechaDesc(@Param("productoId")productoId: Long): List<Movimiento>
+    fun existsByProductoId(productoId: Long): Boolean
 }

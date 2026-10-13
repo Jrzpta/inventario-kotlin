@@ -1,8 +1,8 @@
 package com.example.inventario.config
 
-import com.example.inventario.Model.Rol
-import com.example.inventario.Model.Usuario
-import com.example.inventario.Repository.UsuarioRepository
+import com.example.inventario.model.Rol
+import com.example.inventario.model.Usuario
+import com.example.inventario.repository.UsuarioRepository
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.ApplicationArguments
@@ -28,7 +28,7 @@ class DatosIniciales(
     override fun run (args: ApplicationArguments){
         if (!usuarios.existsByNombreUsuario(adminUsuario)) {
             usuarios.save(Usuario(adminUsuario, encoder.encode(adminClave)!!, Rol.ADMIN))
-            log.info("Usuario admiinistrador '{} creado. Cambia la clave en produccion.",
+            log.info("Usuario administrador '{} creado. Cambia la clave en produccion.",
                 adminUsuario)
         }
     }

@@ -1,6 +1,6 @@
 package com.example.inventario.service
 
-import com.example.inventario.Repository.ProductoRepository
+import com.example.inventario.repository.ProductoRepository
 import com.example.inventario.dto.AlertaBajoStock
 import com.example.inventario.dto.toResponse
 import org.slf4j.LoggerFactory

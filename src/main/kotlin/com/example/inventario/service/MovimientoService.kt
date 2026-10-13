@@ -1,8 +1,8 @@
 package com.example.inventario.service
 
-import com.example.inventario.Model.Movimiento
-import com.example.inventario.Model.TipoMovimiento
-import com.example.inventario.Repository.MovimientoRepository
+import com.example.inventario.model.Movimiento
+import com.example.inventario.model.TipoMovimiento
+import com.example.inventario.repository.MovimientoRepository
 import com.example.inventario.dto.MovimientoRequest
 import com.example.inventario.exception.ReglaNegocioException
 import org.slf4j.LoggerFactory

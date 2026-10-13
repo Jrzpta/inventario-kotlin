@@ -1,4 +1,4 @@
-package com.example.inventario.Model
+package com.example.inventario.model
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -17,7 +17,7 @@ class Producto(
     @Column(nullable = false, length = 120)
     var nombre: String,
 
-    @Column(nullable = false, length = 255)
+    @Column(length = 255)
     var descripcion: String? = null,
 
     @Column(nullable = false)

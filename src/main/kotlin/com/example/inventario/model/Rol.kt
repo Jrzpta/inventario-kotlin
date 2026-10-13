@@ -1,4 +1,4 @@
-package com.example.inventario.Model
+package com.example.inventario.model
 
 /**
  * Roles de acceso:
